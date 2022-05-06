@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: astnoderedis
+  labels:
+    purpose: work
+    app: work
+spec:
+  containers:
+    - name: astridcloudcanister
+      image: cloud.canister.io:5000/arhturescriou/node-redis
+      imagePullPolicy: IfNotPresent
+      env:
+        - name: PORT
+          value: '6379'
+        - name: REDIS_URL
+          value: 'redis://10.3.165.197:6379'
+  imagePullSecrets:
+    - name: regcred
